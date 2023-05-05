@@ -1,8 +1,8 @@
 "use client";
+
 import { useQuery } from "@apollo/client";
-import { CHECK_IN } from "./graphQL";
-import formatDate from "@/utils/formatDate";
-import ExpensiveTable from "./ExpensiveTable";
+import { CHECK_IN } from "./queries";
+import ExpensiveTable from "./MemoizedTable";
 
 const TableComponent = () => {
   const { loading, error, data } = useQuery(CHECK_IN);
@@ -10,20 +10,37 @@ const TableComponent = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  const check__ins = formatDate(data.check_in);
+  const columnsData = () => getColumnData();
 
   return (
     <>
       <div className="app">
         <div className="table">
-          <ExpensiveTable data={check__ins} />
-          {console.log("inside render")}
+          <ExpensiveTable rowData={data} columnsData={columnsData} />
         </div>
       </div>
     </>
   );
 };
 
-async function fetch() {}
+function getColumnData() {
+  return [
+    {
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
+    },
+    {
+      title: "Title",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Created at",
+      dataIndex: "created_at",
+      key: "created_at",
+    },
+  ];
+}
 
 export default TableComponent;
