@@ -1,10 +1,8 @@
 "use client";
-
-import { columnsData } from "./columnsData";
-import { Table } from "antd";
 import { useQuery } from "@apollo/client";
 import { CHECK_IN } from "./graphQL";
 import formatDate from "@/utils/formatDate";
+import ExpensiveTable from "./ExpensiveTable";
 
 const TableComponent = () => {
   const { loading, error, data } = useQuery(CHECK_IN);
@@ -18,13 +16,8 @@ const TableComponent = () => {
     <>
       <div className="app">
         <div className="table">
-          <Table
-            dataSource={check__ins}
-            columns={columnsData}
-            pagination={true}
-            rowKey={"id"}
-            rowSelection={""}
-          />
+          <ExpensiveTable data={check__ins} />
+          {console.log("inside render")}
         </div>
       </div>
     </>

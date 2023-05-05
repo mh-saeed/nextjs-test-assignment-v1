@@ -1,0 +1,7 @@
+.table {
+  margin: 40px;
+}
+
+.clickableRow:hover {
+  cursor: pointer;
+}
