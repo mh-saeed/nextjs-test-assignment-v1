@@ -2,16 +2,16 @@ import { Drawer, Image } from "antd";
 import ImageLoader from "./ImageLoader";
 
 const DrawerComponent = ({ data, ...props }) => {
-  console.log(data);
-
   return (
     <Drawer {...props}>
-      <Image
-        alt="image1"
-        width={335}
-        src={`${data.image_url}`}
-        placeholder={<ImageLoader />}
-      />
+      <div style={{ maxWidth: 335, maxHeight: 275 }}>
+        <Image
+          alt="image1"
+          style={{ objectFit: "cover", width: "100%", height: "100%" }}
+          src={`${data.image_url}`}
+          placeholder={<ImageLoader />}
+        />
+      </div>
     </Drawer>
   );
 };

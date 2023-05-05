@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-export const CHECK_IN = gql`
+export const GET_CHECK_IN = gql`
   query MyQuery {
     check_in {
       id

@@ -1,0 +1,25 @@
+.checkInModal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16px 24px;
+  gap: 36px;
+  height: 280px;
+  width: 572px;
+
+  border-radius: [object Object]px;
+}
+
+.createCheckInButton {
+  padding: 4px 15px;
+  background: #000000;
+  border: 1px solid #000000;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+  border-radius: 2px;
+  color: #ffffff;
+}
+
+.checkInTitle {
+  margin-top: "26px";
+  margin-bottom: "10px";
+}

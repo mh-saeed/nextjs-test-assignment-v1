@@ -1,5 +1,6 @@
 import "normalize.css";
 import "../styles/global.css";
+import Header from "@/components/header/Header";
 
 import { Inter } from "next/font/google";
 
@@ -13,7 +14,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

@@ -11,7 +11,6 @@ const MemoizedTable = ({ rowData, columnsData }) => {
   const handleRowClick = (record) => {
     setSelectedRowData(record);
     setVisible(true);
-    console.log("Clicked row:", record);
   };
 
   const onClose = () => setVisible(false);
