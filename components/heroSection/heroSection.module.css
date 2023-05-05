@@ -1,0 +1,44 @@
+.heroSectionDiv {
+  display: flex;
+  margin: 40px;
+  /* padding-left: 40px;
+  padding-right: 40px; */
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkIns {
+  max-width: 125px;
+  min-height: 40px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 40px;
+}
+
+.checkInsPara {
+  max-width: 378px;
+  min-height: 22px;
+}
+
+.button {
+  height: 32px;
+  width: 115px;
+  border-radius: 2px;
+  padding: 4px 15px 4px 15px;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  background: #000000;
+}
+
+.buttonText {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.line {
+  border: 1px solid #d9d9d9;
+}
