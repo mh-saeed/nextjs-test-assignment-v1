@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Modal, Input } from "antd";
-import styles from "./checkInModal.module.css";
+import styles from "./checkIn.module.css";
 import { useMutation } from "@apollo/client";
 import { POST_CHECK_IN } from "./queries";
 
 const CheckInModal = ({ modal, setModal }) => {
+  // usestate to store input values
   const [title, setTitle] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
@@ -14,12 +15,16 @@ const CheckInModal = ({ modal, setModal }) => {
   if (loading) return "Submitting...";
   if (error) return `Submission error! ${error.message}`;
 
-  const handleTitleChange = (event) => setTitle(event.target.value);
-  const handleImageChange = (event) => setImageUrl(event.target.value);
+  // onChange handle functions to update state
+  const handleTitleChange = (event) => {
+    setTitle((prev) => (prev = event.target.value));
+  };
+  const handleImageChange = (event) => {
+    setImageUrl((prev) => (prev = event.target.value));
+  };
 
+  // onSubmit/onOk handle functions to mutate data and reset states
   const handleSubmit = () => {
-    e.preventDefault();
-
     insert_check_in_one({
       variables: {
         check_in: { name: title, image_url: imageUrl, created_at: new Date() },

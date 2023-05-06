@@ -16,6 +16,7 @@ const MemoizedTable = ({ rowData, columnsData }) => {
   const onClose = () => setVisible(false);
   const rowClassName = () => `${styles.clickableRow}`;
 
+  // formatDate is expensive function to avoid re-run useMemo is used here
   const check__ins = useMemo(() => {
     return formatDate(rowData.check_in);
   }, [rowData]);

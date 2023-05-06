@@ -1,11 +1,11 @@
 .heroSectionDiv {
   display: flex;
-  margin: 40px;
-  /* padding-left: 40px;
-  padding-right: 40px; */
+  margin: 0;
+  padding: 40px;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #d9d9d9;
 }
 
 .checkIns {
@@ -39,6 +39,3 @@
   line-height: 22px;
 }
 
-.line {
-  border: 1px solid #d9d9d9;
-}

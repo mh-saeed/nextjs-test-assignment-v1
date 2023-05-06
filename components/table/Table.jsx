@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import { GET_CHECK_IN } from "./queries";
 import ExpensiveTable from "./MemoizedTable";
 
-const TableComponent = () => {
+const Table = () => {
   const { loading, error, data } = useQuery(GET_CHECK_IN);
 
   if (loading) return <p>Loading...</p>;
@@ -24,7 +24,6 @@ const TableComponent = () => {
 };
 
 // styles for checkedIn(Status) column
-
 const statusStyle = {
   background: "green",
   background: "#000000D9",
@@ -70,4 +69,4 @@ function getColumnData() {
   ];
 }
 
-export default TableComponent;
+export default Table;

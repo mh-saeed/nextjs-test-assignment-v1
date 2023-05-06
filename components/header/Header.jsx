@@ -9,29 +9,27 @@ const { Text } = Typography;
 
 const Header = () => {
   return (
-    <>
-      <header className={styles.header}>
+    <header className={styles.header}>
+      <Link href={"/"} className={styles.Link}>
+        <Text className={styles.logo}>AAA</Text>
+      </Link>
+
+      <span className={styles.button}>
         <Link href={"/"} className={styles.Link}>
-          <Text className={styles.logo}>AAA</Text>
+          <Text className={styles.navItem}>Feedback</Text>
         </Link>
 
-        <span className={styles.button}>
-          <Link href={"/"} className={styles.Link}>
-            <Text className={styles.navItem}>Feedback</Text>
-          </Link>
+        <Link href={"/"} className={styles.Link}>
+          <Text className={styles.navItem}>Support</Text>
+        </Link>
 
-          <Link href={"/"} className={styles.Link}>
-            <Text className={styles.navItem}>Support</Text>
-          </Link>
-
-          <Avatar
-            style={{ backgroundColor: "#87d068" }}
-            icon={<UserOutlined />}
-          />
-        </span>
-      </header>
-      <div className={styles.line}></div>
-    </>
+        <Avatar
+          className="avatar"
+          style={{ backgroundColor: "#87d068" }}
+          icon={<UserOutlined />}
+        />
+      </span>
+    </header>
   );
 };
 
