@@ -1,8 +1,9 @@
 "use client";
-
-import HeroSection from "@/components/heroSection/HeroSection";
-import Table from "@/components/table/Table";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+
+import Table from "@/components/table/Table";
+import HeroSection from "@/components/heroSection/HeroSection";
+import RefetchProvider from "@/Context/RefetchingContext";
 
 const client = new ApolloClient({
   uri: "https://profound-marmot-29.hasura.app/v1/graphql",
@@ -12,8 +13,10 @@ const client = new ApolloClient({
 export default function App() {
   return (
     <ApolloProvider client={client}>
-      <HeroSection />
-      <Table />
+      <RefetchProvider>
+        <HeroSection />
+        <Table />
+      </RefetchProvider>
     </ApolloProvider>
   );
 }

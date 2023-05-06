@@ -10,6 +10,7 @@ const { Text } = Typography;
 
 const HeroSection = () => {
   const [modal, setModal] = useState(false);
+
   return (
     <div className={styles.heroSectionDiv}>
       <span className={styles.checkInsDiv}>

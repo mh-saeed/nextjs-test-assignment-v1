@@ -3,9 +3,18 @@
 import { useQuery } from "@apollo/client";
 import { GET_CHECK_IN } from "./queries";
 import ExpensiveTable from "./MemoizedTable";
+import { useRefetching } from "@/Context/RefetchingContext";
+import { useEffect } from "react";
 
 const Table = () => {
-  const { loading, error, data } = useQuery(GET_CHECK_IN);
+  const { triggerFetch, setTriggerFetch } = useRefetching();
+  const { loading, error, data, refetch } = useQuery(GET_CHECK_IN, {
+    variables: triggerFetch,
+  });
+
+  useEffect(() => {
+    refetch();
+  }, [refetch, triggerFetch]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;

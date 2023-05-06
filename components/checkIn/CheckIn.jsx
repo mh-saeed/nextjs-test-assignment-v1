@@ -1,21 +1,27 @@
+import styles from "./checkIn.module.css";
 import { useState } from "react";
 import { Modal, Input } from "antd";
-import styles from "./checkIn.module.css";
 import { useMutation } from "@apollo/client";
 import { POST_CHECK_IN } from "./queries";
 
-const CheckInModal = ({ modal, setModal }) => {
+import { useRefetching } from "@/Context/RefetchingContext";
+
+const CheckIn = ({ modal, setModal }) => {
   // usestate to store input values
   const [title, setTitle] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
+  // toggleFetching will change context which will trigger refetching in check_in
+  const { toggleFetching } = useRefetching();
+
+  // mutation query
   const [insert_check_in_one, { data, loading, error }] =
     useMutation(POST_CHECK_IN);
 
   if (loading) return "Submitting...";
   if (error) return `Submission error! ${error.message}`;
 
-  // onChange handle functions to update state
+  // onChange handle functions to update state & store values
   const handleTitleChange = (event) => {
     setTitle((prev) => (prev = event.target.value));
   };
@@ -25,14 +31,21 @@ const CheckInModal = ({ modal, setModal }) => {
 
   // onSubmit/onOk handle functions to mutate data and reset states
   const handleSubmit = () => {
-    insert_check_in_one({
-      variables: {
-        check_in: { name: title, image_url: imageUrl, created_at: new Date() },
-      },
-    });
+    if (setTitle && imageUrl) {
+      insert_check_in_one({
+        variables: {
+          check_in: {
+            name: title,
+            image_url: imageUrl,
+            created_at: new Date(),
+          },
+        },
+      });
 
-    setTitle("");
-    setImageUrl("");
+      setTitle("");
+      setImageUrl("");
+      toggleFetching();
+    }
   };
 
   return (
@@ -74,4 +87,5 @@ const CheckInModal = ({ modal, setModal }) => {
     </Modal>
   );
 };
-export default CheckInModal;
+
+export default CheckIn;
